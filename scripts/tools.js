@@ -1,12 +1,4 @@
-const gameOfLifeTable = [
-  [1, 1, 1, 0, 1, 0],
-  [0, 0, 0, 0, 1, 0],
-  [0, 0, 0, 0, 1, 0],
-  [1, 1, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-];
-
-const tableGenerator = (xSize, ySize) => {
+export const tableGenerator = (xSize, ySize) => {
   const array = [];
   for (let i = 0; i < ySize; i++) {
     array.push([]);
@@ -18,7 +10,7 @@ const tableGenerator = (xSize, ySize) => {
   return array;
 };
 
-function celularCounter(xAxis, yAxis, arrayTable) {
+export const celularCounter = (xAxis, yAxis, arrayTable) => {
   let counter1 = 0;
   for (let i = xAxis - 1; i <= xAxis + 1; i++) {
     for (let j = yAxis - 1; j <= yAxis + 1; j++) {
@@ -31,7 +23,7 @@ function celularCounter(xAxis, yAxis, arrayTable) {
   }
 
   return counter1;
-}
+};
 
 /* Console.table(arrayTable);
 console.log(celularCounter(4, 1, arrayTable)); */
@@ -57,12 +49,14 @@ export const theGameOfLife = (arrayTable) => {
   return arrayTable2;
 };
 
-export const playTheGame = (parameter) => {
-  const newGameTable = theGameOfLife(gameOfLifeTable);
+export const playTheGame = (loops, arrayTable) => {
+  console.table(arrayTable);
+  if (loops < 50) {
+    const newTable = theGameOfLife(arrayTable);
+    setTimeout(() => {
+      playTheGame(loops + 1, newTable);
+    }, 800);
+  }
 };
- */
 
-/* console.table(gameOfLifeTable);
-
-
-/* console.table(theGameOfLife(tableGenerator(3, 3))); */
+playTheGame(2, tableGenerator(10, 9));

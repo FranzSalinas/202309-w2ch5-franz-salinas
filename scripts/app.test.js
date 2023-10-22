@@ -1,7 +1,5 @@
 /* eslint-disable no-undef */
-import { tableGenerator } from "./tools.js";
-import { theGameOfLife } from "./tools.js";
-import { celularCounter } from "./tools.js";
+import { tableGenerator, celularCounter, theGameOfLife } from "./tools.js";
 
 describe("Testing theGameOfLife funtion", () => {
   describe("The funtion cumplies with the rules of the game of life ", () => {

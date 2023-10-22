@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { tableGenerator } from "./tools.js";
 import { theGameOfLife } from "./tools.js";
 import { celularCounter } from "./tools.js";
@@ -38,7 +39,7 @@ describe("Testing theGameOfLife funtion", () => {
       ];
 
       const result = theGameOfLife(x);
-      // Asert
+
       expect(result).toStrictEqual(expected);
     });
 
@@ -58,7 +59,7 @@ describe("Testing theGameOfLife funtion", () => {
       ];
 
       const result = theGameOfLife(x);
-      // Asert
+
       expect(result).toStrictEqual(expected);
     });
   });
@@ -76,8 +77,22 @@ describe("Testing celularCounter funtion", () => {
       const expected = 2;
 
       const result = celularCounter(1, 1, testData);
-      // Asert
+
       expect(result).toBe(expected);
+    });
+  });
+});
+
+describe("Testing tableGenerator funtion", () => {
+  describe("The only thing that can be measure is the lenght of the new array ", () => {
+    test("The result should be 4 ", () => {
+      const testData = tableGenerator(4, 4);
+
+      const testDataLenght = testData.length;
+
+      const expected = 4;
+
+      expect(testDataLenght).toBe(expected);
     });
   });
 });

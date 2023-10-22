@@ -25,9 +25,6 @@ export const celularCounter = (xAxis, yAxis, arrayTable) => {
   return counter1;
 };
 
-/* Console.table(arrayTable);
-console.log(celularCounter(4, 1, arrayTable)); */
-
 export const theGameOfLife = (arrayTable) => {
   const arrayTable2 = structuredClone(arrayTable);
 
@@ -52,12 +49,10 @@ export const theGameOfLife = (arrayTable) => {
 export const playTheGame = (loops, arrayTable) => {
   console.clear();
   console.table(arrayTable);
-  if (loops < 50) {
+  if (loops < 60) {
     const newTable = theGameOfLife(arrayTable);
     setTimeout(() => {
       playTheGame(loops + 1, newTable);
-    }, 800);
+    }, 1200);
   }
 };
-
-playTheGame(2, tableGenerator(10, 9));

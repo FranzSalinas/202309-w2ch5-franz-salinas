@@ -1,10 +1,22 @@
 const gameOfLifeTable = [
-  [1, 1, 1, 0, 1],
-  [0, 0, 0, 0, 1],
-  [0, 0, 0, 0, 1],
-  [1, 1, 1, 0, 0],
-  [0, 0, 0, 0, 0],
+  [1, 1, 1, 0, 1, 0],
+  [0, 0, 0, 0, 1, 0],
+  [0, 0, 0, 0, 1, 0],
+  [1, 1, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
 ];
+
+const tableGenerator = (xSize, ySize) => {
+  const array = [];
+  for (let i = 0; i < ySize; i++) {
+    array.push([]);
+    for (let j = 0; j < xSize; j++) {
+      array[i].push(Math.round(Math.random()));
+    }
+  }
+
+  return array;
+};
 
 function celularCounter(xAxis, yAxis, arrayTable) {
   let counter1 = 0;
@@ -24,14 +36,13 @@ function celularCounter(xAxis, yAxis, arrayTable) {
 /* Console.table(arrayTable);
 console.log(celularCounter(4, 1, arrayTable)); */
 
-function theGameOfLife(arrayTable) {
+export const theGameOfLife = (arrayTable) => {
   const arrayTable2 = structuredClone(arrayTable);
 
-  const extent = arrayTable2.length;
   let value;
 
-  for (let i = 0; i < extent; i++) {
-    for (let j = 0; j < extent; j++) {
+  for (let i = 0; i < arrayTable2.length; i++) {
+    for (let j = 0; j < arrayTable2[i].length; j++) {
       value = celularCounter(i, j, arrayTable);
       if (arrayTable[i][j] === 0) {
         if (celularCounter(i, j, arrayTable) === 3) {
@@ -44,7 +55,14 @@ function theGameOfLife(arrayTable) {
   }
 
   return arrayTable2;
-}
+};
 
-console.table(gameOfLifeTable);
-console.table(theGameOfLife(gameOfLifeTable));
+export const playTheGame = (parameter) => {
+  const newGameTable = theGameOfLife(gameOfLifeTable);
+};
+ */
+
+/* console.table(gameOfLifeTable);
+
+
+/* console.table(theGameOfLife(tableGenerator(3, 3))); */

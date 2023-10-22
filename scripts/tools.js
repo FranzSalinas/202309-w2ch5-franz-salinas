@@ -50,6 +50,7 @@ export const theGameOfLife = (arrayTable) => {
 };
 
 export const playTheGame = (loops, arrayTable) => {
+  console.clear();
   console.table(arrayTable);
   if (loops < 50) {
     const newTable = theGameOfLife(arrayTable);
